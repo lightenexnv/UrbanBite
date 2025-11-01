@@ -14,11 +14,8 @@ class Startpage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Colors.white
-        ),
         title: Text(
-          "UrbanBite",
+          "Welcome to UrbanBite",
           style: GoogleFonts.dmSans(
             fontSize: width * 0.07,
             fontWeight: FontWeight.bold,
