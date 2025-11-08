@@ -13,108 +13,94 @@ class Startpage extends StatelessWidget {
     final width = size.width;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Welcome to UrbanBite",
-          style: GoogleFonts.dmSans(
-            fontSize: width * 0.07,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
-        centerTitle: true,
-        backgroundColor: Theme.of(context).primaryColor,
-      ),
-      body: Center(
-        child: Container(
-          height: height * 0.6,
-          width: width * 0.8,
-          decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor,
-            borderRadius: BorderRadius.circular(20),
-          ),
+      backgroundColor: Colors.white,
+      body: SafeArea(
           child: Padding(
-            padding: EdgeInsets.all(width * 0.05),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Flexible(
-                  flex: 4,
-                  child: Image.asset(
-                    "assets/imageassets/UbLogoNoBg.png",
-                    fit: BoxFit.contain,
-                    width: width * 0.6,
-                  ),
-                ),
-                Flexible(
-                  flex: 2,
+            padding: EdgeInsets.symmetric(
+                horizontal: width * 0.08,
+                vertical: height * 0.04),
+            child: Center(
+              child: Container(height: height*.7,
+                child: SingleChildScrollView(
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const LoginScreen(),
-                              ),
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
-                              vertical: height * 0.02,
-                            ),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                          ),
-                          child: Text(
-                            "Login",
-                            style: GoogleFonts.dmSans(
-                              fontWeight: FontWeight.bold,
-                              fontSize: width * 0.045,
-                            ),
-                          ),
+                        height: height*0.3,
+                        child: Center(
+                          child: Image.asset("assets/imageassets/urbanbitelogonobgnotext.png",
+                            fit: BoxFit.contain,),
                         ),
                       ),
-                      SizedBox(height: height * 0.02),
+                      SizedBox(height: height*0.07,),
+                      Text("Welcome to UrbanBite",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 28
+                      ),),
+                      SizedBox(height: height*0.01,),
+                      Text("Your Favourite Food, Delivered Fast",
+                        style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          color: Colors.grey[600]
+                        ),),
+                      SizedBox(
+                        height: height*0.06,
+                      ),
                       SizedBox(
                         width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const SignUpScreen(),
-                              ),
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
-                              vertical: height * 0.02,
-                            ),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                          ),
-                          child: Text(
-                            "Sign Up",
+                        child:
+                        ElevatedButton(onPressed: () {
+                            Navigator.pushReplacement(context, MaterialPageRoute(builder:
+                            (context) => LoginScreen()));},
+                            child: Text("Login",
                             style: GoogleFonts.dmSans(
                               fontWeight: FontWeight.bold,
-                              fontSize: width * 0.045,
+                              fontSize: 18,
+                              color: Colors.white
+                            ),),
+                        style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(
+                              vertical: height * 0.020,
                             ),
-                          ),
-                        ),
+                            backgroundColor: Color(0xFFEB3A42),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)
+                          )
+                        ),),
                       ),
+                      SizedBox(
+                        height: height*0.02,
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        child:
+                        OutlinedButton(onPressed: () {
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder:
+                              (context) => SignUpScreen()));},
+                          child: Text("SignUp",
+                            style: GoogleFonts.dmSans(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: Color(0xFFEB3A42)
+                            ),),
+                          style: OutlinedButton.styleFrom(
+                            side: BorderSide(color: Color(0xFFEB3A42), width: 2),
+                              padding: EdgeInsets.symmetric(
+                                vertical: height * 0.020,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)
+                              )
+                          ),),
+                      )
                     ],
-                  ),
+                  )
                 ),
-              ],
+              ),
             ),
-          ),
-        ),
-      ),
+          )),
     );
   }
 }

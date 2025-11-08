@@ -8,8 +8,7 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       body: Container(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          mainAxisAlignment: MainAxisAlignment.center,          children: [
             Center(child: Text("Phirse Hello Guys"))
           ],
         ),

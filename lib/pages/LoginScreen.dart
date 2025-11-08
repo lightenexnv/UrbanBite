@@ -35,167 +35,187 @@ class _LoginScreenState extends State<LoginScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
           "Login",
           style: GoogleFonts.dmSans(
             fontSize: width * 0.06,
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
         centerTitle: true,
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Color(0xFFF9F9FF),
       ),
-      body: Center(
-        child: Container(
-          width: width * 0.85,
-          height: height * 0.75,
-          decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          padding: EdgeInsets.all(width * 0.05),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Flexible(
-                  flex: 3,
-                  child: Image.asset(
-                    "assets/imageassets/UbLogoNoBg.png",
-                    fit: BoxFit.contain,
-                    width: width * 0.5,
-                  ),
-                ),
-                Flexible(
-                  flex: 2,
-                  child: TextFormField(
-                    validator: (value) {
-                      if(value!.isEmpty || (value == null)){
-                        return "Please Enter Email";
-                      }else if(!value.contains("@")){
-                        return "Please Enter Valid Email Address";
-                      }
-                      return null;
-                    },
-                    keyboardType: TextInputType.emailAddress,
-                    style: const TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                      hintText: "Enter Username or Email",
-                      labelText: "Enter Username or Email",
-                      prefixIcon: const Icon(
-                        Icons.email,
-                        color: Color(0xFFB22043),
-                      ),
-                      hintStyle: const TextStyle(color: Colors.white70),
-                      labelStyle: const TextStyle(color: Colors.white70),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.white70),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide:
-                        const BorderSide(width: 1, color: Color(0xFFB22043)),
-                      ),
-                    ),
-                  ),
-                ),
-                Flexible(
-                  flex: 2,
-                  child: TextFormField(
-                    validator: (value) {
-                      if(value!.isEmpty || (value == null)){
-                        return "Please Enter Your Password";
-                      }else if(value.length<6){
-                        return "Password must be at least 6 characters long";
-                      }
-                      return null;
-                    },
-                    keyboardType: TextInputType.text,
-                    obscureText: !_isPasswordVisible,
-                    style: const TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                      hintText: "Enter Password",
-                      labelText: "Enter Password",
-                      prefixIcon: const Icon(
-                        Icons.lock,
-                        color: Color(0xFFB22043),
-                      ),
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          _isPasswordVisible
-                              ? Icons.visibility
-                              : Icons.visibility_off,
-                          color: Colors.white70,
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            _isPasswordVisible = !_isPasswordVisible;
-                          });
-                        },
-                      ),
-                      hintStyle: const TextStyle(color: Colors.white70),
-                      labelStyle: const TextStyle(color: Colors.white70),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.white70),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide:
-                        const BorderSide(color: Color(0xFFB22043)),
-                      ),
-                    ),
-                  ),
-                ),
-                Flexible(
-                  flex: 2,
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: _submitForm,
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(vertical: height * 0.02),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                      child: Text(
-                        "Login",
-                        style: GoogleFonts.dmSans(
-                          fontWeight: FontWeight.bold,
-                          fontSize: width * 0.045,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Flexible(
-                  flex: 1,
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => const SignUpScreen()),
-                      );
-                    },
-                    child: Text(
-                      "Don't have an account? Sign Up",
-                      style: GoogleFonts.dmSans(
-                        color: const Color(0xFFB22043),
-                        fontWeight: FontWeight.bold,
-                        fontSize: width * 0.04,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+      body: SafeArea(
+          child: SingleChildScrollView(
+            child: Padding(padding: EdgeInsets.symmetric(
+                horizontal: width * 0.08,
+                vertical: height * 0.04,
             ),
-          ),
-        ),
-      ),
+            child: Form(
+              key: _formKey,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                        height: height*0.2,
+                        child: Center(child: Image.asset("assets/imageassets/urbanbitelogonobgnotext.png"))),
+                    SizedBox(height: height*0.07,),
+                    Text("Welcome To UrbanBite",
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 28
+                    ),),
+                    SizedBox(height: height*0.01,),
+                    Text("Login To Continue",
+                      style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: Colors.grey[600]
+                      ),),
+                    SizedBox(height: height*0.05,),
+                    TextFormField(
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Please Enter Email";
+                        } else if (!value.contains("@")) {
+                          return "Please Enter Valid Email Address";
+                        }
+                        return null;
+                      },
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        hintText: "Enter Email or Username",
+                        hintStyle: GoogleFonts.dmSans(
+                            color: Colors.black
+                        ),
+                        labelText: "Enter Email or Username",
+                          labelStyle: GoogleFonts.dmSans(
+                              color: Colors.black
+                          ),
+                        prefixIcon: Icon(Icons.email_outlined,
+                        color: Color(0xFFEB3A42),),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius:BorderRadius.circular(10),
+                          borderSide: BorderSide(
+                            color: Color(0xFFEB3A42)
+                          )
+                        ),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius:BorderRadius.circular(10),
+                              borderSide: BorderSide(
+                                  color: Color(0xFFEB3A42)
+                              )
+                          )
+
+                      ),
+
+                    ),
+                    SizedBox(height: height*0.02,),
+                    TextFormField(
+                      obscureText: !_isPasswordVisible,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "Please Enter Your Password";
+                          } else if (value.length < 6) {
+                            return "Password must be at least 6 characters long";
+                          }
+                          return null;
+                        },
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                          hintText: "Enter Password",
+                          hintStyle: GoogleFonts.dmSans(
+                              color: Colors.black
+                          ),
+                          labelText: "Enter Password",
+                          labelStyle: GoogleFonts.dmSans(
+                              color: Colors.black
+                          ),
+                          prefixIcon: Icon(Icons.lock_outline,
+                            color: Color(0xFFEB3A42),),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _isPasswordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: Colors.grey[600],
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _isPasswordVisible = !_isPasswordVisible;
+                            });
+                          },
+                        ),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius:BorderRadius.circular(10),
+                              borderSide: BorderSide(
+                                  color: Color(0xFFEB3A42)
+                              )
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius:BorderRadius.circular(10),
+                              borderSide: BorderSide(
+                                  color: Color(0xFFEB3A42)
+                              )
+                          ),
+
+                      ),
+
+                    ),
+                    SizedBox(height: height*0.02,),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(onPressed: _submitForm,
+                          style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.symmetric(
+                                vertical: height * 0.020,
+                              ),
+                              backgroundColor: Color(0xFFEB3A42),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)
+                              )
+                          ),
+                          child: Text("Login",
+                          style: GoogleFonts.dmSans(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: Colors.white
+                          ),) ),
+                    ),
+                    SizedBox(height: height*0.001),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Don't have an account?",
+                          style: GoogleFonts.dmSans(
+                            fontSize: 14,
+                            color: Colors.grey[600],
+                          ),),
+
+                        //ToDo:-. Use Inkwell
+
+                        TextButton(onPressed: () {
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder:
+                          (context) => SignUpScreen()));
+                        }, child: Text("Sign Up",
+                          style: GoogleFonts.dmSans(
+                            fontSize: 14,
+                            color: const Color(0xFFEB3A42),
+                            fontWeight: FontWeight.bold
+                          ),),)
+
+                      ],
+                    )
+
+
+                  ],
+                ),
+              ),
+            ),),
+          ))
     );
   }
 }
