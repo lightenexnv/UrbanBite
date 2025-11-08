@@ -119,8 +119,8 @@ urbanbite_gdgoc_v3/
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/yourusername/urbanbite_gdgoc_v3.git
-cd urbanbite_gdgoc_v3
+git clone https://github.com/lightenexnv/UrbanBite.git
+cd UrbanBite
 ```
 
 2. **Install Flutter dependencies**
@@ -239,17 +239,12 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
----
-
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
 
 ## 👨‍💻 Author
 
-**UrbanBite Team**
+**Neil Verma**
 
 ---
 
